@@ -27,8 +27,8 @@
 
 # define DIGIT(d) (d >= '0' && d <= '9' ? 1 : 0)
 # define MOD(x) ((x) < 0 ? -(x) : (x))
-# define CEIL(x) ((x) <= (long long)(x) ? (x) : (x + 1))
-# define FLOOR(x) ((x) >= (long long)(x) ? (x) : (x - 1))
+# define CEIL(x) (((x) <= ((long long)(x))) ? (x) : (x + 1))
+# define FLOOR(x) (((x) <= ((long long)(x))) ? (x) : (x - 1))
 
 # define SPEC "sSpdDioOuUxXcC"
 

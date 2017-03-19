@@ -12,52 +12,15 @@
 
 #include "ft_printf.h"
 
-//void	last_transf(char *str, t_e *e)
-//{
-//    if (e->f->minus)
-//
-//}
-
-//long double fraction_nb(long double nb)
-//{
-//    if ((nb - FLOOR(nb)) == 0.5 && (long long)FLOOR(nb) % 2 == 0)
-//        return (FLOOR(nb));
-//    else if (CEIL(nb) - nb == 0.5)
-//        return (CEIL(nb));
-//    if (nb - FLOOR(nb) >= 0.5)
-//        return (CEIL(nb));
-//    return (FLOOR(nb));
-//}
-long double	ft_ceil(long double nbr)
+long double fraction_nb(long double nb)
 {
-    long double	i;
-
-    i = (long long)nbr;
-    if (nbr <= i)
-        return (i);
-    return (i + 1);
-}
-
-long double	ft_floor(long double nbr)
-{
-    long double	i;
-
-    i = (long long)nbr;
-    if (nbr >= i)
-        return (i);
-    return (i - 1);
-}
-
-long double	fraction_nb(long double nbr)
-{
-    if (nbr - ft_floor(nbr) == 0.5 && (long long)ft_floor(nbr) % 2 == 0)
-        return (ft_floor(nbr));
-    else if (ft_ceil(nbr) - nbr == 0.5)
-        return (ft_ceil(nbr));
-    if(nbr - ft_floor(nbr) >= 0.5)
-        return (ft_ceil(nbr));
-    else
-        return (ft_floor(nbr));
+    if ((nb - FLOOR(nb)) == 0.5 && (long long)FLOOR(nb) % 2 == 0)
+        return (FLOOR(nb));
+    else if (CEIL(nb) - nb == 0.5)
+        return (CEIL(nb));
+    if (nb - FLOOR(nb) >= 0.5)
+        return (CEIL(nb));
+    return (FLOOR(nb));
 }
 
 void    put_nb_str(uintmax_t nb, char **str)
@@ -74,67 +37,16 @@ void    put_nb_str(uintmax_t nb, char **str)
     }
 }
 
-//char		*round_me(long double nbr, t_e *func, char *str)
-//{
-//    int			i;
-//    int			acc;
-//    int 		j;
-//
-//    j = 0;
-//    acc = func->precision;
-//    while (acc > 0)
-//    {
-//        nbr *= 10;
-//        if (acc == 1)
-//            nbr = get_size_nb(nbr);
-//        i = (int) nbr;
-//        str[j] = (char)(i + '0');
-//        nbr = nbr - i;
-//        acc--;
-//        j++;
-//    }
-//    str[j] = '\0';
-//    return (str);
-//}
-//
-//char		*round_me_d(long double nbr, t_e *func, char *str)
-//{
-//    int			p;
-//    long long	nbr_l;
-//    int i;
-//    char *string;
-//    char *tmp;
-//
-//    i = 0;
-//    p = func->precision;
-//    while (p > 0 && p-- > 0)
-//        nbr *= 10;
-//    nbr_l = fraction_nb(nbr);
-//    p = func->precision - get_size_nb(nbr_l);
-//    while (p > 0)
-//    {
-//        str[i++] = '0';
-//        p--;
-//    }
-//    str[i] = '\0';
-//    tmp = str;
-//    string = u_itoa_base(nbr_l, 10);
-//    str = ft_strjoin(tmp, string);
-// //   free(tmp);
-//    free(string);
-//    return (str);
-//}
-
 void    round_me_d(long double nb, t_e *e, char *str)
 {
-    long long   nb_len;
+    long double   nb_len;
     int         if_prec;
 
     if_prec = e->precision;
     while (if_prec > 0 && if_prec-- > 0)
         nb *= 10;
     nb_len = fraction_nb(nb);
-    if_prec = e->precision - get_size_nb(nb_len);
+    if_prec = e->precision - get_size_nb((uintmax_t)nb_len);
     while (if_prec > 0 && if_prec-- > 0)
     {
         *str = '0';
