@@ -34,10 +34,10 @@ void    init_char_di(t_di *di, intmax_t nb, t_e *e)
     sz_zero = di->size_zero;
     di->nbr = (e->precision == 0 && !nb ? ft_strnew(0) : u_itoa_base((uintmax_t)MOD(nb), 10));
     di->zero = ft_strnew((size_t)sz_zero);
-    while (--sz_zero > -1)
+    while (--sz_zero != -1)
         di->zero[sz_zero] = '0';
     di->space = ft_strnew((size_t)sz_space);
-    while (--sz_space > -1)
+    while (--sz_space != -1)
         di->space[sz_space] = ' ';
     di->sign = ft_strnew(1);
     if (di->size_sign && nb < 0)
