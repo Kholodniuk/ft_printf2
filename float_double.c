@@ -12,15 +12,36 @@
 
 #include "ft_printf.h"
 
-long double fraction_nb(long double nb)
+long double	ft_ceil(long double nbr)
 {
-    if ((nb - FLOOR(nb)) == 0.5 && (long long)FLOOR(nb) % 2 == 0)
-        return (FLOOR(nb));
-    else if (CEIL(nb) - nb == 0.5)
-        return (CEIL(nb));
-    if (nb - FLOOR(nb) >= 0.5)
-        return (CEIL(nb));
-    return (FLOOR(nb));
+    long double	i;
+
+    i = (long long)nbr;
+    if (nbr <= i)
+        return (i);
+    return (i + 1);
+}
+
+long double	ft_floor(long double nbr)
+{
+    long double	i;
+
+    i = (long long)nbr;
+    if (nbr >= i)
+        return (i);
+    return (i - 1);
+}
+
+long double	fraction_nb(long double nbr)
+{
+    if (nbr - ft_floor(nbr) == 0.5 && (long long)ft_floor(nbr) % 2 == 0)
+        return (ft_floor(nbr));
+    else if (ft_ceil(nbr) - nbr == 0.5)
+        return (ft_ceil(nbr));
+    if(nbr - ft_floor(nbr) >= 0.5)
+        return (ft_ceil(nbr));
+    else
+        return (ft_floor(nbr));
 }
 
 void    put_nb_str(uintmax_t nb, char **str)
