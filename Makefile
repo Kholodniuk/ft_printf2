@@ -6,7 +6,7 @@
 #    By: skholodn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/11 17:33:06 by skholodn          #+#    #+#              #
-#    Updated: 2017/03/18 03:42:28 by skholodn         ###   ########.fr        #
+#    Updated: 2017/03/20 13:48:16 by skholodn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS = ft_printf.c \
         ft_strlen.c \
         ft_strnew.c \
         parse_persent.c \
+        parse_persent1.c \
+        parse_persent2.c \
         ft_strchr.c \
         ft_atoi.c \
         itoa_base.c \
@@ -42,7 +44,7 @@ SRCS = ft_printf.c \
         non_printable.c \
         get_iso_data.c \
         parse_colors.c \
-        parse_fd.c \
+        fraction_nb.c \
         get_binary.c \
 
 OBJ = $(SRCS:.c=.o)
